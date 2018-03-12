@@ -1,0 +1,28 @@
+{
+  "name": "oracle-apex-slug",
+  "version": "1.0.0",
+  "description": "Slug for Oracle Apex",
+  "scripts": {
+    "dev": "node build.js dev",
+    "prod": "node build.js prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShamatienkoYaroslav/oracle-apex-slug.git"
+  },
+  "keywords": [
+    "oracle",
+    "apex",
+    "slug",
+    "pl/sql"
+  ],
+  "author": "Yaroslav <shamatienko.yaroslav@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShamatienkoYaroslav/oracle-apex-slug/issues"
+  },
+  "homepage": "https://github.com/ShamatienkoYaroslav/oracle-apex-slug#readme",
+  "devDependencies": {
+    "fs-extra": "^5.0.0"
+  }
+}

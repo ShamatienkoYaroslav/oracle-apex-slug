@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "table": {
+      "name": "slug_symbols_dev",
+      "constraintName": "slug_symbols_cyrillic_dev"
+    },
+    "package": {
+      "name": "slug_util_dev"
+    }
+  },
+  "prod": {
+    "table": {
+      "name": "slug_symbols",
+      "constraintName": "slug_symbols_cyrillic"
+    },
+    "package": {
+      "name": "slug_util"
+    }
+  }
+}
+

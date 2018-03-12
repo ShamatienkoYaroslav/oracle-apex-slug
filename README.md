@@ -3,7 +3,7 @@ Slug for Oracle Apex
 
 ## Installation
 
-```@https://raw.githubusercontent.com/ShamatienkoYaroslav/oracle-apex-slug/master/slug.sql```
+```@https://raw.githubusercontent.com/ShamatienkoYaroslav/oracle-apex-slug/master/dist/slug.sql```
 
 ## Example
 
