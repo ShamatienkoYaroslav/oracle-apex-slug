@@ -9,10 +9,10 @@ Slug for Oracle Apex
 
 ```
 declare
-  l_string := 'Тест   1';
+  l_string slug_util.slug_varchar := 'Тест   1';
 begin
   l_string := slug_util.slugify(string_in => l_string);
-  DBMS_OUTPUT.PRINT_LINE(l_string);
+  DBMS_OUTPUT.PUT_LINE(l_string);
 end;
 
 
