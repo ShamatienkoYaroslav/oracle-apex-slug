@@ -1,6 +1,6 @@
 {
   "name": "oracle-apex-slug",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Slug for Oracle Apex",
   "scripts": {
     "dev": "node build.js dev",
