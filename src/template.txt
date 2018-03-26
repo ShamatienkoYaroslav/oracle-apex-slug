@@ -1,0 +1,62 @@
+/*
+Created by Shamatienko Yaroslav (shamatienko.yaroslav@gmail.com)
+*/
+
+prompt *** Installing PL/SQL-SLUG ***
+
+-- PREPARE
+
+prompt *** Drop Old Package ***
+
+DROP PACKAGE {{pkg_name}};
+/
+
+-- CREATE PACKAGE
+
+prompt *** Package ***
+
+CREATE OR REPLACE PACKAGE {{pkg_name}} AS
+    SUBTYPE slug_varchar IS VARCHAR2(32767);
+    
+    FUNCTION slugify ( string_in IN slug_varchar ) RETURN slug_varchar;
+
+END {{pkg_name}};
+/
+
+CREATE OR REPLACE PACKAGE BODY {{pkg_name}} AS
+
+    -- ******** PUBLIC ********
+    
+    FUNCTION slugify ( string_in IN slug_varchar ) RETURN slug_varchar
+        is
+        l_parsed_string slug_varchar := regexp_replace(string_in, '[[:space:]]+', '-');
+        
+        type r_char_record is record (
+            CYRILLIC_SYMBOL NVARCHAR2(10),
+            LATIN_SYMBOLS slug_varchar
+        );
+        type a_chars is table of r_char_record index by pls_integer;
+        v_chars a_chars;
+        v_index pls_integer;
+        
+        function init_chars return a_chars
+        as
+            v_chars a_chars;
+        begin
+            {{chars}}
+            
+            return v_chars;
+        end;
+    begin
+        v_chars := init_chars();
+        v_index := v_chars.FIRST;
+        while (v_index is not null) loop
+            l_parsed_string := replace(l_parsed_string, v_chars(v_index).CYRILLIC_SYMBOL, v_chars(v_index).LATIN_SYMBOLS);
+            v_index := v_chars.next(v_index);
+        end loop;
+        
+        return l_parsed_string;
+    end;
+
+END {{pkg_name}};
+/
